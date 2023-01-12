@@ -100,7 +100,7 @@ mask, cont = get_center_of_ignition(frame)
 >> возвращает кортеж контуров, найденных по цвету на изображении
 
 ### get_center_of_ignition
-надстройка над <a href="_find_by_color">_find_by_color</a>
+надстройка над <a href="#_find_by_color">_find_by_color</a>
 
 <br>Атрибуты
 > `img`: np.uint8 
