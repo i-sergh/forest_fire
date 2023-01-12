@@ -21,12 +21,12 @@
 
 import cv2
 import numpy as np
-#import sys
+import sys
 from os import system
 
 from utils import  get_center_of_ignition
 
-
+print(sys.path)
 
 system('color a')
 system('cls')
@@ -50,7 +50,10 @@ while True:
         tr, frame = cap.read()
         # if actually no video
         if not tr:
-            print('err: video reading error! no video in the path '  + PATH, file=sys.stderr)
+            print('err: video reading error!\nno video in the path ' +  sys.path[0] + '\\' + '\\'.join(PATH.split('/')), file=sys.stderr)
+            print('try to create in folder ' +'"'+ sys.path[0].split('\\')[-1] + '"', end='', file=sys.stderr)
+            print(' path ' +'"'+ '\\'.join(PATH.split('/')[:-1]) + '"', end='', file=sys.stderr)
+            print(', put your video here and rename it like ' +'"' + PATH.split('/')[-1] + '"', end='\n\n', file=sys.stderr)
             ERR_COUNTER += 1
             if ERR_COUNTER == 10:
                 break
