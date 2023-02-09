@@ -1,10 +1,14 @@
 import cv2
 import numpy as np
 import sys
+from os import listdir
+from os.path import isfile, join
+
 
 # TODO
-def get_path(folder):
-    pass
+def get_files_list(file_path):
+    files = [join(file_path, f) for f in listdir(file_path) if isfile(join(file_path, f))]
+    return files 
 
 def _find_by_color(img: np.uint8, low: tuple, high: tuple) -> (np.uint8, tuple):
     """
@@ -39,7 +43,12 @@ def _find_by_color(img: np.uint8, low: tuple, high: tuple) -> (np.uint8, tuple):
     return img_mask, cont
         
 def get_center_of_ignition(img: np.uint8) -> (np.uint8, tuple):
-    return _find_by_color(img, (0,70, 70), (50, 255, 255) )
+    return _find_by_color(img, (0,70, 70),
+                                                 (50, 255, 255) )
+
+def get_center_of_ignition_ic(img: np.uint8) -> (np.uint8, tuple):
+    return _find_by_color(img, (0,70, 70),
+                                                (30, 255, 255) )
 
 def  get_smoke():
     pass
